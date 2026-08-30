@@ -1,4 +1,4 @@
-const CACHE_NAME = 'budget-app-v1.2';
+const CACHE_NAME = 'budget-app-v2.0';
 const FILES_TO_CACHE = [
   './index.html',
   './manifest.json',
@@ -23,7 +23,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // 로컬 파일은 캐시 우선, 외부 CDN(Chart.js 등)은 네트워크 우선
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then((cached) => cached || fetch(event.request))
